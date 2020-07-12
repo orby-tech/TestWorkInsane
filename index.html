@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ToDoApp</title>
+    <meta name="description" content="ToDoApp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#948b6e">
+    <link rel="icon" type="image/png" href="./images/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" href="./images/icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#948b6e">
+    
+    <script src="https://use.fontawesome.com/7367a0f1e3.js"></script>
+
+    <link rel="stylesheet" href="./css/todo.css">
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+<header>
+</header>
+<main>
+    <div class="app"></div>
+    
+        <div id = "todo">
+            <input type = "text" class="header" id="header" placeholder="Name of progect">
+            <button id="exportButton">Export</button>
+            <input id="file-input" type="file" name="file" >
+            <div class="searchBox">
+                <p class="searchBox__label">RegExp</p>
+                <input type="checkbox"  id="searchBox__checkBox">
+                <input type="text" class="header" id="searchBox__text" placeholder="Write your filter">
+                <p>Last search:</p> <p id="lastSearch"></p>
+            </div>
+            <input type = "text" class="header" id="addToDo" placeholder="Add new list">
+            <br/>
+            <ul class="todos" id="ulLevel0">
+            </ul>
+        </div>
+</main>
+<footer>
+</footer>
+<script type="module"  src="./js/app.mjs"></script>
+</body>
+</html>
