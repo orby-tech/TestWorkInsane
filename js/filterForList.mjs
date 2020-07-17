@@ -1,6 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-alert */
-/* eslint-disable import/extensions */
 import {
   saveTodo, loadTodo,
 } from './fileSystem.mjs';
@@ -54,6 +51,41 @@ const elementValueUpdate = (value, id) => {
       ...elements.slice(1),
     ];
   };
+  let tempArrayOfIndexes = id.split('_');
+  tempArrayOfIndexes = tempArrayOfIndexes.filter((item) => item !== '');
+  saveTodo(listCounter(tempArrayOfIndexes, loadTodo()));
+};
+/**
+ * @author Timur Bondarenko
+ * @param value {String}, id { Number }
+ * @returns new List { Obgect }
+ * @version 1.0
+ */
+
+const elementDiscriptionUpdate = (value, id) => {
+  /**
+   * @author Timur Bondarenko
+   * creater new list of obgects
+   * @param indexes(splited id) {Array}, elements (old list) {Obgect}
+   * @returns new List { Obgect }
+   * @version 1.0
+   */
+  const listCounter = (indexes, elements) => {
+    if (indexes.length === 1) {
+      elements[Number(indexes[0])].discription = value;
+      return elements;
+    }
+    return [
+      ...elements.splice(0, indexes[0]),
+      {
+        value: elements[0].value,
+        checked: elements[0].checked,
+        childs: listCounter(indexes.slice(1), elements[0].childs),
+      },
+      ...elements.slice(1),
+    ];
+  };
+  console.log(value)
   let tempArrayOfIndexes = id.split('_');
   tempArrayOfIndexes = tempArrayOfIndexes.filter((item) => item !== '');
   saveTodo(listCounter(tempArrayOfIndexes, loadTodo()));
@@ -210,4 +242,5 @@ export {
   elementEdit,
   getElement,
   elementFromClipboard,
+  elementDiscriptionUpdate,
 };

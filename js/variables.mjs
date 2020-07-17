@@ -7,6 +7,7 @@
 const inputAddToDo = document.querySelector("input[id = 'addToDo']");
 const inputHeader = document.querySelector("input[id = 'header']");
 const inputSearch = document.querySelector("input[id = 'searchBox__text']");
+const inputDiscription = document.querySelector("textarea");
 const checkBoxOfSearch = document.querySelector("input[id = 'searchBox__checkBox']");
 const ul = document.getElementById('ulLevel0');
 const li = document.querySelector('li');
@@ -38,6 +39,10 @@ const searchSettings = {
   checked: false,
   last: '',
 };
+let listOfId = {
+  list:[],
+  selected: null,
+}
 export {
   inputAddToDo,
   inputHeader,
@@ -48,4 +53,6 @@ export {
   searchSettings,
   importButton,
   exportButton,
+  listOfId,
+  inputDiscription,
 };

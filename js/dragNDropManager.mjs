@@ -1,5 +1,4 @@
-/* eslint-disable no-alert */
-/* eslint-disable import/extensions */
+
 import { saveTodo, loadTodo } from './fileSystem.mjs';
 import { watchToDoList } from './displayList.mjs';
 import {

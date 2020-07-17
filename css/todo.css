@@ -2,10 +2,10 @@ body{
     min-height:100%;
     font-family: Bad Script;
     background: #91eae4;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 51, 5));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(235, 51, 5)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-}
+} 
 
 h1{
     text-transform: uppercase;
@@ -41,7 +41,14 @@ span{
     height:50px;
     width: 0;
 }
-
+textarea {
+    display: flex;
+}
+img {
+    width: 20px;
+    background-color: rgb(96, 244, 200);
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
 i{
     cursor: pointer;
 }
@@ -67,9 +74,22 @@ button:hover {
     color: black;
     border: 2px solid #86a8e7;
 }
+ul {
+    list-style-type: none;
+    background-color: rgba(235, 230, 217, 0.328);
+}
 li {
-    padding: 5px;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 12px;
+    padding-right: 10px;
+    min-width: 100px;
+    max-width: 320px;
+    text-align: left;
+    font-size: 80%;
+    border: 1px solid rgba(248, 248, 248, 0.17);
     -moz-user-select: none; -khtml-user-select: none; user-select: none;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
 }
 #buttons{
     display:inline-block;
@@ -82,9 +102,10 @@ li {
     margin: 0 auto ;
     box-shadow: 0 0 1em black;
     min-width: 320px;
-    max-width: 600px;
+    max-width: 900px;
     background:white;
     position:relative;
+    background-color:rgba(255, 255, 255, 0.445)
 }
 #overlay{
     height: 0;
@@ -132,7 +153,18 @@ li {
 .searchBox__label {
     display: inline-block;
 }
+ul#ulLevel0 > li {
+    display: inline-flexbox;
+    float: left;
+    font-size: 160%;
+    text-align: center !important;
+    border: 1px solid rgba(224, 154, 154, 0.3);
+    border-radius: 10px;
+    width: 320px;
+    margin-bottom: 40px;
+    margin: 2px
 
+}
 #dragAndDropElement {
     width: 50px;
     height: 10px;
@@ -144,10 +176,24 @@ li {
     display:none;
     transition: 0.3s linear;
 }
+.settingsBlock{
+    display: grid;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    grid-template-columns: 24px 24px;
+    grid-template-rows: 24px 24px;
+}
+.hotKeys {
+    clear: both;
+}
 .checked{
     color:gray;
     text-decoration:line-through;
 
+}
+.selected {
+    background-color: rgba(153, 116, 153, 0.5);
 }
 .dragIn {
     background-color: rgb(204, 176, 176);

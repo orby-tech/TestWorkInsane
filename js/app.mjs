@@ -13,6 +13,7 @@ import initAppPage from './initApp.mjs';
  * @author Timur Bondarenko
  * listener to service Worker
  */
+/*
 window.addEventListener('load', () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
@@ -24,7 +25,8 @@ window.addEventListener('load', () => {
       });
   }
 });
-initEventListeners();
+*/
 initAppPage();
 watchToDoList();
+initEventListeners();
 initDragManager();

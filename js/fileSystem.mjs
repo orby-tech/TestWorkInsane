@@ -1,5 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable import/extensions */
 import {
   inputHeader,
   defaultListOfElements,

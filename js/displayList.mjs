@@ -1,8 +1,8 @@
-/* eslint-disable import/extensions */
 import { loadTodo } from './fileSystem.mjs';
 import {
   ul,
   searchSettings,
+  listOfId,
 } from './variables.mjs';
 
 /**
@@ -37,9 +37,11 @@ const watchToDoList = () => {
    * One tick of toDo list
    * @version 1.0
    */
+  let tempList = []
   const createList = (data) => {
     const paranteUl = data.ul;
     let i = 0;
+
     data.elements.forEach((item) => {
       let li = document.createElement('li');
       const checkBox = document.createElement('input');
@@ -47,21 +49,27 @@ const watchToDoList = () => {
       const editElement = document.createElement('span');
       const appendElement = document.createElement('span');
       const deleteIcon = document.createElement('i');
+      const deleteIMG = document.createElement('img');
       const editIcon = document.createElement('i');
+      const editIMG = document.createElement('img');
       const appendIcon = document.createElement('i');
-
-      deleteIcon.classList.add('fa', 'fa-trash');
+      const appendIMG = document.createElement('img');
+      const settingsBlock = document.createElement('div');
+      deleteIMG.src = './images/clickers/trash.png'
+      deleteIcon.append(deleteIMG);
       deleteElement.append(deleteIcon);
       deleteElement.id = ('delete');
 
-      editIcon.classList.add('fa', 'fa-pencil');
+      editIMG.src = './images/clickers/pancel.png'
+      editIcon.append(editIMG);
       editElement.append(editIcon);
       editElement.id = ('edit');
 
-      appendIcon.classList.add('fa', 'fa-plus');
+      appendIMG.src = './images/clickers/plus.png'
+      appendIcon.append(appendIMG);
       appendElement.append(appendIcon);
       appendElement.id = ('append');
-
+      tempList.push( `${data.parentID}_${i}`)
       checkBox.type = 'checkbox';
       checkBox.id = `${data.parentID}_${i}`;
       if (item.checked) checkBox.checked = true;
@@ -76,13 +84,22 @@ const watchToDoList = () => {
 
       li.id = `${data.parentID}_${i}`;
       if (paranteUl.id !== 'ulLevel0') {
-        li.append(deleteElement, editElement, appendElement, checkBox, todo);
+        settingsBlock.append(deleteElement, editElement, appendElement, checkBox);
       } else {
-        li.append(deleteElement, editElement, appendElement, todo);
+        settingsBlock.append(deleteElement, editElement, appendElement);
       }
-
+      settingsBlock.classList.toggle('settingsBlock')
+      li.append(settingsBlock, todo);
       if (item.checked) li.classList.toggle('checked');
-
+      if (li.id === listOfId.selected) {
+        const discriptionBox = document.createElement('div');
+        const discription = document.createElement('textarea');
+        discription.value = item.discription ? item.discription : ""
+        discriptionBox.append(discription)
+        discriptionBox.id = "discription"
+        li.classList.toggle('selected')
+        li.appendChild(discriptionBox)
+      };
       paranteUl.appendChild(li);
       if (item.hasOwnProperty('childs')) {
         const newUl = document.createElement('ul');
@@ -107,7 +124,9 @@ const watchToDoList = () => {
     parentID: '',
     elements: loadTodo(),
   };
+
   createList(dataForList);
+  listOfId.list = tempList
 };
 
 export { watchToDoList };
